@@ -4,7 +4,7 @@ wikipedia
 pdfplumber
 #wikipediaapi==0.5.8
 langchain
-sklearn
+scikit-learn
 pathlib
 elasticsearch
 nltk
