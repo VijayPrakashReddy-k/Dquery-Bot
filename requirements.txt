@@ -8,4 +8,4 @@ sklearn
 pathlib
 elasticsearch
 nltk
-docx
+python-docx
