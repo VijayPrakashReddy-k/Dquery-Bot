@@ -1,0 +1,10 @@
+streamlit==1.12.2
+docx2txt
+wikipedia
+pdfplumber
+wikipediaapi
+langchain
+sklearn
+pathlib
+elasticsearch
+nltk
