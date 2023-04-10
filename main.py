@@ -9,7 +9,7 @@ import wikipedia
 import pdfplumber
 import numpy as np
 import pandas as pd
-import wikipediaapi
+#import wikipediaapi
 import streamlit as st
 from docx import Document
 from pipelines import pipeline
@@ -22,8 +22,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 # pandas display options
 pd.set_option('display.max_colwidth', None)
 
-wikipedia.set_lang('en')
-wiki = wikipediaapi.Wikipedia('en')
+wiki = wikipedia.set_lang('en')
+#wiki = wikipediaapi.Wikipedia('en')
 
 @st.cache_data() #allow_output_mutation=True
 def get_base64_of_bin_file(bin_file):
