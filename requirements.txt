@@ -9,3 +9,5 @@ pathlib
 elasticsearch
 nltk
 python-docx
+torch
+transformers
