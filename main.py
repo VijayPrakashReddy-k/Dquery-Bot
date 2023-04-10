@@ -19,6 +19,8 @@ from langchain.docstore.document import Document
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer 
 
+nltk.download('punkt')
+
 # pandas display options
 pd.set_option('display.max_colwidth', None)
 
