@@ -2,7 +2,7 @@ streamlit==1.12.2
 docx2txt
 wikipedia
 pdfplumber
-wikipediaapi
+wikipediaapi==0.5.8
 langchain
 sklearn
 pathlib
