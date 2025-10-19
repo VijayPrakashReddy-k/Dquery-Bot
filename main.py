@@ -20,7 +20,36 @@ from langchain.docstore.document import Document
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer 
 
-nltk.download('punkt')
+# --- NLTK setup: put this near the top, after imports ---
+from nltk.data import find
+from filelock import FileLock
+
+NLTK_DIR = os.path.join(os.path.dirname(__file__), ".nltk_data")
+os.environ["NLTK_DATA"] = NLTK_DIR
+os.makedirs(NLTK_DIR, exist_ok=True)
+
+@st.cache_resource(show_spinner=False)
+def ensure_nltk():
+    """Download once per process, avoid race on Streamlit Cloud."""
+    lock_path = os.path.join(NLTK_DIR, ".nltk.lock")
+    with FileLock(lock_path, timeout=120):
+        def _has(res):
+            try:
+                find(res); return True
+            except LookupError:
+                return False
+        if not _has("tokenizers/punkt"):
+            nltk.download("punkt", download_dir=NLTK_DIR, quiet=True)
+        # Some environments also need punkt_tab
+        if not _has("tokenizers/punkt_tab"):
+            try:
+                nltk.download("punkt_tab", download_dir=NLTK_DIR, quiet=True)
+            except Exception:
+                pass
+
+ensure_nltk()
+
+# nltk.download('punkt')
 
 # pandas display options
 pd.set_option('display.max_colwidth', None)
